@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.wireme.app.ui.screens
 
 import androidx.compose.foundation.clickable
@@ -24,7 +26,6 @@ fun HomeScreen(navController: NavController) {
     var loading by remember { mutableStateOf(true) }
     var error by remember { mutableStateOf<String?>(null) }
     val scope = rememberCoroutineScope()
-    val snackbarHostState = remember { SnackbarHostState() }
 
     LaunchedEffect(Unit) {
         scope.launch {
@@ -44,7 +45,6 @@ fun HomeScreen(navController: NavController) {
     }
 
     Scaffold(
-        snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
             TopAppBar(
                 title = { Text("مستخدمين حوليك") },
