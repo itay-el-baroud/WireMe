@@ -1,11 +1,18 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.wireme.app.ui.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.ExitToApp
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -42,7 +49,7 @@ fun SettingsScreen(navController: NavController) {
             )
             
             SettingsItem(
-                icon = Icons.Default.Block,
+                icon = Icons.Default.Close,
                 title = "المحظورين",
                 onClick = { navController.navigate("blocked") }
             )
@@ -73,7 +80,7 @@ fun SettingsItem(
             .fillMaxWidth()
             .clickable(onClick = onClick)
             .padding(16.dp),
-        verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
             imageVector = icon,
