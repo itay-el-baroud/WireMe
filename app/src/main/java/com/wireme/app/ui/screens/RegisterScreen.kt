@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.wireme.app.ui.screens
 
 import androidx.compose.foundation.layout.*
@@ -6,7 +8,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
@@ -128,11 +129,8 @@ fun RegisterScreen(navController: NavController) {
                 modifier = Modifier.fillMaxWidth(),
                 enabled = !loading
             ) {
-                if (loading) {
-                    CircularProgressIndicator(modifier = Modifier.size(24.dp))
-                } else {
-                    Text("إنشاء حساب")
-                }
+                if (loading) CircularProgressIndicator(modifier = Modifier.size(24.dp))
+                else Text("إنشاء حساب")
             }
         }
     }
