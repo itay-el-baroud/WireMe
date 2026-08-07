@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1023616575430",
+    "project_id": "wireme-2366b",
+    "storage_bucket": "wireme-2366b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023616575430:android:1bd71c9d51211d2ca774c7",
+        "android_client_info": {
+          "package_name": "com.wireme.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByOdQMkMDZ6hCPAnerR0wBRr5w4YZCP6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
