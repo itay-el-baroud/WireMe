@@ -7,11 +7,13 @@ class WireMeFirebaseService : FirebaseMessagingService() {
     
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
-        // هنا نعمل إشعار لما يجي رسالة جديدة
+        remoteMessage.notification?.let {
+            // TODO: Show notification
+        }
     }
     
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        // هنا نبعت التوكن للسيرفر
+        // TODO: Send token to server
     }
 }
