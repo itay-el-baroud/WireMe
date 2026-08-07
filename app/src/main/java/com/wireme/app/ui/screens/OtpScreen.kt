@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.wireme.app.api.RetrofitClient
 import kotlinx.coroutines.launch
@@ -67,7 +68,7 @@ fun OtpScreen(navController: NavController, email: String) {
                 modifier = Modifier.fillMaxWidth(),
                 textStyle = LocalTextStyle.current.copy(
                     textAlign = TextAlign.Center,
-                    letterSpacing = 8.dp
+                    letterSpacing = 8.sp
                 ),
                 singleLine = true
             )
