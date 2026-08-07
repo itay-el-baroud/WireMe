@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.wireme.app.ui.screens
 
 import androidx.compose.foundation.background
@@ -32,7 +34,12 @@ fun ChatScreen(navController: NavController, otherEmail: String, otherName: Stri
     val snackbarHostState = remember { SnackbarHostState() }
 
     LaunchedEffect(Unit) {
-        loadMessages(scope, otherEmail) { messages = it; loading = false }
+        scope.launch {
+            loadMessages(otherEmail) { 
+                messages = it
+                loading = false
+            }
+        }
     }
 
     Scaffold(
@@ -110,7 +117,7 @@ fun ChatScreen(navController: NavController, otherEmail: String, otherName: Stri
                                     message = msg
                                 )
                                 if (response.isSuccessful) {
-                                    loadMessages(scope, otherEmail) { 
+                                    loadMessages(otherEmail) { 
                                         messages = it
                                     }
                                 }
@@ -161,22 +168,21 @@ fun MessageBubble(message: Message) {
     }
 }
 
-private fun loadMessages(
-    scope: CoroutineScope,
+private suspend fun loadMessages(
     otherEmail: String,
     onResult: (List<Message>) -> Unit
 ) {
-    scope.launch {
-        try {
-            val response = RetrofitClient.api.getMessages(
-                userEmail = "current_user@email.com",
-                otherEmail = otherEmail
-            )
-            if (response.isSuccessful) {
-                onResult(response.body()?.get("messages") ?: emptyList())
-            }
-        } catch (e: Exception) {
+    try {
+        val response = RetrofitClient.api.getMessages(
+            userEmail = "current_user@email.com",
+            otherEmail = otherEmail
+        )
+        if (response.isSuccessful) {
+            onResult(response.body()?.get("messages") ?: emptyList())
+        } else {
             onResult(emptyList())
         }
+    } catch (e: Exception) {
+        onResult(emptyList())
     }
 }
